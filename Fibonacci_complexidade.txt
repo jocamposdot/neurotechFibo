@@ -1,0 +1,57 @@
+Análise da complexidade:
+
+T(n) = T(n – 1) + T(n – 2) + 4 (quando o algorítmo percorre todos os custos)
+T(0) = T(1) = 1 (quando para no if)
+
+Sendo assim, supondo que T(n – 1) é aproximadamente igual a T(n – 2), temos:
+T(n) = 2T(n – 2) + c (onde 'c' é a constante 4 que é o custo total das operações)
+ 
+Em seguida vamos reescrever nosso algorítmo para aplicar uma fórmula.
+Então, T(n) = 2T(n – 2) + c pode ser rescrito assim: 
+T(n) = 2{ 2T(n – 4) + c } + c
+ 
+E agora utilizaremos a fórmula T(n) = 2^k * T(n – 2k) + (2^k – 1)c em nosso algorítimo:
+Para k = 2:
+ T(n) = 4T(n – 4) + 3c            
+Para k = 3:
+ T(n) = 8T(n – 6) + 7c 
+Para k = 4
+ T(n) = 16T(n – 8) + 15c        
+
+Agora vamos calcular o caso base de T(0) e T(1):
+T(0) = T(1) = 1 
+
+Então para encontrar o k usaremos o T(0) naquela mesma fórmula:
+T(n) = 2^k * T(n – 2k) + (2^k – 1)c
+
+Por isso irei igualar n – 2k com 0 para termos T(0).
+n – 2k = 0
+
+k = n/2
+
+Então utilizando o valor de 'k' na fórmula teremos:
+T(n) = 2^n/2 * T(0) + (2^n/2 – 1)c
+
+Concluímos que a complexidade para o limite inferior é:
+T(n) ˜ 2^n/2
+
+Fazendo a mesma coisa para o limite superior...
+(lembrando que 'c', nossa constante, é 4):
+T(n) = 2T(n – 1) + c 
+
+T(n) = 4T(n – 2) + 3c
+
+T(n) = 8T(n – 3) + 7c
+
+T(n) = 2^kT(n – k) + (2^k – 1)c
+
+Para T(0) temos que:
+n – k = 0
+
+n = k
+
+T(n) = 2^n * T(0) + (2^n – 1) * c
+
+T(n) = 2^n * 1 + (2^n – 1) * c
+
+T(n) ˜ 2^n (Limite superior)
